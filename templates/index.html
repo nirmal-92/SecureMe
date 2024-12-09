@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Evaluator</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        .result { margin-top: 20px; }
+        .strong { color: green; }
+        .moderate { color: orange; }
+        .weak { color: red; }
+        ul { text-align: left; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Password Strength Evaluator</h1>
+    <form method="POST">
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">Evaluate</button>
+    </form>
+    {% if password %}
+    <div class="result">
+        <h2>Result for: <em>{{ password }}</em></h2>
+        <p class="{{ strength.lower() }}">Password Strength: <strong>{{ strength }}</strong></p>
+        <ul>
+            {% for criteria, passed in criteria.items() %}
+            <li>{{ criteria }}: {{ "✔" if passed else "✘" }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html>
