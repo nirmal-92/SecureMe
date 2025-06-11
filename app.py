@@ -29,7 +29,7 @@ def evaluate_password_strength(password):
     if criteria_met == len(criteria):
         strength = "Strong"
     elif criteria_met >= len(criteria) - 2:
-        strength = "Medium"
+        strength = "Moderate"
     else:
         strength = "Weak"
 
